@@ -1,0 +1,14 @@
+require:
+  - rubocop-rails
+  - rubocop-faker
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0
+  StyleGuideBaseURL: https://rubystyle.guide
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
