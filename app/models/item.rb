@@ -1,6 +1,5 @@
 class Item < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, length: { minimum: 3 }
   validates :description, presence: true
   validates :price, presence: true
-  validates :title, length: { minimum: 3 }
 end
