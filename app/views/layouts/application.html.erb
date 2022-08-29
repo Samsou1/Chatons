@@ -10,8 +10,8 @@
     <%= javascript_importmap_tags %>
     <script src="https://js.stripe.com/v3/"></script>
   </head>
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="flex flex-col h-screen items-center">
+    <main class="flex flex-col flex-1 items-center w-screen">
       <%= yield %>
     </main>
   </body>
