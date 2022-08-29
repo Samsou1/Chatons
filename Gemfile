@@ -42,6 +42,9 @@ gem "bcrypt", "~> 3.1.7"
 # Authentication tool.
 gem 'devise'
 
+# # Action_Mailer MAILJET
+gem 'mailjet'
+
 # Payment tool.
 gem 'stripe'
 
