@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "dzhavat.git-cheatsheet",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "mhutchie.git-graph",
+    "wingrunr21.vscode-ruby",
+    "lorankloeze.ruby-rubocop-revived",
+    "castwide.solargraph",
+    "vense.rails-snippets",
+    "kaiwood.endwise",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "aliariff.vscode-erb-beautify",
+    "ecmel.vscode-html-css",
+    "vincaslt.highlight-matching-tag",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+  ]
+}
