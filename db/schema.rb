@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_29_135610) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_29_164613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "add_items_to_carts", force: :cascade do |t|
+  create_table "cartitems", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_add_items_to_carts_on_cart_id"
-    t.index ["item_id"], name: "index_add_items_to_carts_on_item_id"
+    t.index ["cart_id"], name: "index_cartitems_on_cart_id"
+    t.index ["item_id"], name: "index_cartitems_on_item_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -33,6 +33,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_135610) do
     t.text "description"
     t.decimal "price", precision: 5, scale: 2
     t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_paid", default: false
+  end
+
+  create_table "orderitems", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orderitems_on_item_id"
+    t.index ["order_id"], name: "index_orderitems_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
