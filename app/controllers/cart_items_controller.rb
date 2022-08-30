@@ -22,6 +22,23 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cartitem = Cartitem.find_by_id(params[:id])
-    @cartitem.destroy
+    puts '$' * 20
+    puts 'trying to destroy cartitem'
+    puts params
+    puts @cartitem
+    puts '$' * 20
+    if @cartitem.destroy
+      respond_to do |format|
+        format.html { redirect_to cart_path(@cartitem.cart_id) }
+        format.js {}
+      end
+      flash[:notice] = 'Item removed from cart'
+    else
+      respond_to do |format|
+        format.html { redirect_to cart_path(@cartitem.cart_id) }
+        format.js {}
+      end
+      flash[:notice] = 'Please try again'
+    end
   end
 end

@@ -3,9 +3,7 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-
     <%= render @cart %>
-
     <%= link_to 'Edit this cart', edit_cart_path(@cart), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this cart', cart_path(@cart), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
@@ -13,3 +11,16 @@
     <%= link_to 'Back to carts', carts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
+Items<br>
+<% @items.each_with_index do |item, index|%>
+  Item n° <%=index + 1%><br>
+  <%=item.title%><br>
+  <%=item.description%><br>
+  <%=item.image_url%><br>
+  <%=item.price%><br>
+  <% puts @cartitems[index].id%>
+  <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <br>
+<%end%><br>
+<br>
+Total price:<%=@total_price%>
