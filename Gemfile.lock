@@ -322,6 +322,7 @@ DEPENDENCIES
   database_consistency
   debug
   devise
+  faker
   htmlbeautifier
   importmap-rails
   jbuilder
