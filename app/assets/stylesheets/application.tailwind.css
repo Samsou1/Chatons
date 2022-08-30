@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  h3 {
+    @apply text-xl font-bold text-transparent bg-clip-text gradient w-min
+  }
+
+  p {
+    @apply text-base font-semibold my-2
   }
 }
 
-*/
+
+@layer components {
+
+  .btn {
+    @apply text-center py-2 px-3 m-2 sm:m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
+  }
+}
+
+@layer utilities {
+
+  .gradient {
+    @apply bg-gradient-to-r from-cyan-400 to-pink-400;
+  }
+
+  .gradient-light {
+    @apply bg-gradient-to-r from-cyan-400/50 to-pink-400/50
+  }
+}

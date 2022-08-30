@@ -26,5 +26,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnType": false,
   "ruby.rubocop.autocorrectOnSave": true,
-  "ruby.rubocop.useServer": true
+  "ruby.rubocop.useServer": true,
+  "[gemfile]": {
+    "editor.defaultFormatter": "LoranKloeze.ruby-rubocop-revived"
+  }
 }
