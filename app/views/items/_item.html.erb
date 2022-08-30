@@ -1,27 +1,22 @@
-<div id="<%= dom_id item %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= item.title %>
-  </p>
+<div id="<%= dom_id item %>" class="w-full p-4 sm:rounded-lg flex flex-col bg-rose-600 sm:bg-cyan-600 md:bg-rose-600 lg:bg-cyan-600 xl:bg-rose-600 2xl:bg-cyan-600">
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= item.description %>
-  </p>
+  <h3 class="mt-4">Name:</h3>
+  <p><%= item.title %></p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= item.price %>
-  </p>
+  <h3 class="mt-4">Description:</h3>
+  <p class="capitalize"><%= item.description %></p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Image url:</strong>
-    <%= item.image_url %>
-  </p>
+  <h3 class="mt-4">Price:</h3>
+  <p><%= item.price  %></p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this item", item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this item', edit_item_path(item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4" %>
+
+  <div class="flex justify-evenly">
+    <% if action_name != "show" %>
+      <%= link_to "Show this item", item, class: "btn" %>
+      <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+
 </div>

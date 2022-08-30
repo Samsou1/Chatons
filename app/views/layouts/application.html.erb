@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tailwind7</title>
+    <title>Chatonshop</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://js.stripe.com/v3/"></script>
   </head>
-  <body class="flex flex-col h-screen items-center">
+  <body class="flex flex-col h-screen items-center bg-gray-800 text-gray-100">
+    <header class="w-screen">
+    <%= render 'layouts/navbar' %>
+    </header>
     <main class="flex flex-col flex-1 items-center w-screen">
       <%= yield %>
     </main>
+    <%= render 'layouts/footer'%>
   </body>
 </html>

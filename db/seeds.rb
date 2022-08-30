@@ -1,4 +1,5 @@
 require 'faker'
+require 'unsplash'
 
 Faker::UniqueGenerator.clear
 
@@ -11,11 +12,13 @@ until User.count == 10
   )
 end
 
-until Item.count == 20
+kittens = Unsplash::Photo.search('kitten', 1, 20)
+
+20.times do |i|
   Item.create!(
     title: Faker::Creature::Cat.unique.name,
-    description: Faker::Artist.unique.name,
+    description: kittens[i].alt_description,
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-    image_url: 'https://source.unsplash.com/random/?kitten'
+    image_url: kittens[i].urls.regular
   )
 end
