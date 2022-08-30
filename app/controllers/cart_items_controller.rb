@@ -1,8 +1,14 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
-  def create
-    @cartitem = Cartitem.new(params)
 
+  def create
+    @cart_count = Cart.where(user_id: current_user.id).count
+    @cart = if @cart_count == 0
+              Cart.create(user_id: current_user.id)
+            else
+              @cart_count = Cart.where(user_id: current_user.id)[0]
+            end
+    @cartitem = Cartitem.new(cart_id: @cart.id, item_id: params[:item])
     respond_to do |_format|
       if @cartitem.save
         respond_to do |format|
@@ -22,11 +28,6 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cartitem = Cartitem.find_by_id(params[:id])
-    puts '$' * 20
-    puts 'trying to destroy cartitem'
-    puts params
-    puts @cartitem
-    puts '$' * 20
     if @cartitem.destroy
       respond_to do |format|
         format.html { redirect_to cart_path(@cartitem.cart_id) }

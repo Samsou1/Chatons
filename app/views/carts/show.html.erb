@@ -18,7 +18,7 @@ Items<br>
   <%=item.description%><br>
   <%=item.image_url%><br>
   <%=item.price%><br>
-  <% puts @cartitems[index].id%>
+  <%  @cartitems[index].id%>
   <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   <br>
 <%end%><br>
