@@ -11,7 +11,9 @@
     <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body class="flex flex-col h-screen items-center">
+    <header class="w-screen">
       <%= render 'layouts/navbar' %>
+    </header>
     <main class="flex flex-col flex-1 items-center w-screen">
        <%= yield %>
     </main>
