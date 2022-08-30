@@ -1,20 +1,22 @@
-<div id="<%= dom_id item %>" class="shadow-lg shadow-green-800 mx-auto box-border h-85 w-85 p-4 border-4 >
-  <p class="my-5">
-    <strong class="block font-mono mb-1 uppercase text-xl">Name:</strong>
-    <%= item.title %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-mono mb-1 uppercase text-xl">Description :</strong>
-    <%= item.description %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-mono mb-1 uppercase text-xl ">Price :</strong>
-    <%= item.price  %>
-  </p>
-  <img src="<%= item.image_url %>" alt="" class="object-fill h-48 w-96 ">
-  <% if action_name != "show" %>
-    <%= link_to "Show this item", item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this item', edit_item_path(item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div id="<%= dom_id item %>" class="w-full p-4 sm:rounded-lg flex flex-col bg-rose-600 sm:bg-cyan-600 md:bg-rose-600 lg:bg-cyan-600 xl:bg-rose-600 2xl:bg-cyan-600">
+
+  <h3 class="mt-4">Name:</h3>
+  <p><%= item.title %></p>
+
+  <h3 class="mt-4">Description:</h3>
+  <p class="capitalize"><%= item.description %></p>
+
+  <h3 class="mt-4">Price:</h3>
+  <p><%= item.price  %></p>
+
+  <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4" %>
+
+  <div class="flex justify-evenly">
+    <% if action_name != "show" %>
+      <%= link_to "Show this item", item, class: "btn" %>
+      <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
+      <hr class="mt-6">
+    <% end %>
+  </div>
+
 </div>
