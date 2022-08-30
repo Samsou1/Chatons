@@ -1,4 +1,4 @@
-<div id="<%= dom_id item %>" class="w-full p-4 sm:rounded-lg flex flex-col bg-rose-600 sm:bg-cyan-600 md:bg-rose-600 lg:bg-cyan-600 xl:bg-rose-600 2xl:bg-cyan-600">
+<div id="<%= dom_id item %>" class="w-full sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/4 lg:mx-2 sm:my-8 flex flex-col items-center justify-between p-4 my-4 rounded-lg bg-rose-600 sm:bg-cyan-600 md:bg-rose-600 lg:bg-cyan-600 xl:bg-rose-600 2xl:bg-cyan-600">
 
   <h3 class="mt-4">Name:</h3>
   <p><%= item.title %></p>
@@ -9,9 +9,9 @@
   <h3 class="mt-4">Price:</h3>
   <p><%= item.price  %></p>
 
-  <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4" %>
+  <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4 shadow-lg max-h-72" %>
 
-  <div class="flex justify-evenly">
+  <div class="flex justify-center">
     <% if action_name != "show" %>
       <%= link_to "Show this item", item, class: "btn" %>
       <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
