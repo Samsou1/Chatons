@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  default from: 'chaton_shop@yopmail.com'
+
   def welcome_email(user)
     @user = user
     @url = "https://chaton-shop.herokuapp.com/"

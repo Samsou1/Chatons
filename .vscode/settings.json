@@ -6,7 +6,7 @@
     "editor.formatOnType": false
   },
   "[ruby]": {
-    "editor.defaultFormatter": "misogi.ruby-rubocop",
+    "editor.defaultFormatter": "LoranKloeze.ruby-rubocop-revived",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.formatOnType": false
