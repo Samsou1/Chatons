@@ -1,5 +1,4 @@
 require 'faker'
-require 'unsplash'
 
 Faker::UniqueGenerator.clear
 
