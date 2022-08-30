@@ -17,7 +17,7 @@
 @layer components {
 
   .btn {
-    @apply text-center py-2 px-3 m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
+    @apply text-center py-2 px-3 m-2 sm:m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
   }
 }
 
