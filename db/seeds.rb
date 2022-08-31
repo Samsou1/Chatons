@@ -7,7 +7,7 @@ User.create(email: 'admin@yopmail.com', password: 'adminpassword', admin: true, 
 
 until User.count == 10
   User.create!(
-    email: Faker::Internet.email(domain: 'yopmail'),
+    email: Faker::Internet.email(domain: 'yopmail.com'),
     password: Faker::Internet.password(min_length: 8),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
