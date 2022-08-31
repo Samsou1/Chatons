@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     @cart = if @cart_count == 0
               Cart.create(user_id: current_user.id)
             else
-              @cart_count = Cart.where(user_id: current_user.id)[0]
+              Cart.where(user_id: current_user.id)[0]
             end
     @cartitem = Cartitem.new(cart_id: @cart.id, item_id: params[:item])
     respond_to do |_format|
