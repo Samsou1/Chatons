@@ -1,7 +1,15 @@
 require 'faker'
-require 'unsplash'
 
 Faker::UniqueGenerator.clear
+
+User.create(email: 'email@yopmail.com', password: 'adminpassword')
+
+until User.count == 10
+  User.create!(
+    email: Faker::Internet.email(domain: 'yopmail'),
+    password: Faker::Internet.password(min_length: 8)
+  )
+end
 
 kittens = Unsplash::Photo.search('kitten', 1, 20)
 
