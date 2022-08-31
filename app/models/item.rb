@@ -7,4 +7,6 @@ class Item < ApplicationRecord
   has_many :carts, through: :cartitems
   has_many :orderitems
   has_many :orders, through: :orderitems
+
+  has_one_attached :image
 end
