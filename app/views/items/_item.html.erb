@@ -5,14 +5,14 @@
   <p class="capitalize"><%= item.description %></p>
   <h3 class="mt-4">Price:</h3>
   <p><%= item.price  %></p>
-  <%if @item.image.attached?%>
-  <%= image_tag @item.image, alt: 'Photographie' %>
-  <%= form_tag item_images_path(@item), multipart: true do %>
+  <%if item.image.attached?%>
+  <%= image_tag item.image, alt: 'Photographie' %>
+  <%= form_tag item_images_path(item), multipart: true do %>
     <%= file_field_tag :image %>
     <%= submit_tag "Modifier l'illustration" %>
   <% end %>
 <%else%>
-  <%= form_tag item_images_path(@item), multipart: true do %>
+  <%= form_tag item_images_path(item), multipart: true do %>
     <%= file_field_tag :image %>
     <%= submit_tag "Modifier l'illustration" %>
   <% end %>
