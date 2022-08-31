@@ -2,12 +2,18 @@ require 'faker'
 
 Faker::UniqueGenerator.clear
 
-User.create(email: 'admin@yopmail.com', password: 'adminpassword', admin: true)
+User.create(email: 'admin@yopmail.com', password: 'adminpassword', admin: true, first_name: 'admin', last_name: 'admin',
+            address: 'xxx', zip_code: '999999', city: 'xxx')
 
 until User.count == 10
   User.create!(
     email: Faker::Internet.email(domain: 'yopmail.com'),
-    password: Faker::Internet.password(min_length: 8)
+    password: Faker::Internet.password(min_length: 8),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code,
+    city: Faker::Address.city
   )
 end
 

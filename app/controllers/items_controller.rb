@@ -7,7 +7,9 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1 or /items/1.json
-  def show; end
+  def show
+    @item = Item.find(params[:id])
+  end
 
   # GET /items/new
   def new
