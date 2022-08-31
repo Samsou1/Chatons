@@ -1,18 +1,34 @@
 <p>Bienvenue ! </p>
 
-<div>
-  <%if @user.profile_picture.attached?%>
-    <%= image_tag @user.profile_picture, alt: 'avatar' %>
-      <h3>Changer d'avatar ?</h3>
-      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
-        <%= file_field_tag :profile_picture %>
-        <%= submit_tag "Mettre à jour ton avatar" %>
+  <div class="w-full sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/4 lg:mx-2 sm:my-8 flex flex-row grid grid-cols-3 gap-4 items-center justify-between p-4 my-4 rounded-lg bg-purple-900 shadow-lg shadow-purple-900/50">
+    <div class="col-span-1">
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'avatar' %>
+          <a>Changer d'avatar ?</a>
+          <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+            <%= file_field_tag :profile_picture %>
+            <%= submit_tag "Update your avatar" %>
+          <% end %>
+      <%else%>
+          <a>Changer d'avatar ?</a>
+          <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+            <%= file_field_tag :profile_picture %>
+            <%= submit_tag "Update your avatar" %>
+          <% end %>
+      <%end%>
+    </div>
+    <div class="col-span-2">
+      <h3 class="mt-4">Name:</h3>
+      <p class="font-style: italic"><%= @user.first_name %> <%= @user.last_name %></p>
+      <h3 class="mt-4">Adress:</h3>
+      <p><%= @user.address %></p>
+      <p><%= @user.zip_code %> <%= @user.city %></p>
+    </div>
+  </div>
+    <div class="flex justify-center">
+      <% if action_name != "show" %>
+        <%= link_to "Show this user", @user, class: "btn" %>
+        <%= link_to 'Edit this user', edit_user_path(@user), class: "btn" %>
+        <hr class="mt-6">
       <% end %>
-  <%else%>
-      <h3>Changer d'avatar ?</h3>
-      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
-        <%= file_field_tag :profile_picture %>
-        <%= submit_tag "Mettre à jour ton avatar" %>
-      <% end %>
-  <%end%>
-</div>
+    </div>
