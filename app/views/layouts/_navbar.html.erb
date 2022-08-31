@@ -13,7 +13,7 @@
 
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg id="navToggle" onclick="toggleShow()" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <svg id="navToggle" onclick="toggleNav()" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
           <!--
@@ -23,7 +23,7 @@
 
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg id="navToggle" onclick="toggleShow()" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <svg id="navToggle" onclick="toggleNav()" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -49,18 +49,16 @@
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
         <button type="button" class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-        <img class="hidden lg:block h-8 w-auto" src="https://cdn-icons-png.flaticon.com/512/5484/5484426.png" alt="Panier">
-
-          <%
-=begin%>
- <span class="sr-only">View notifications</span>
-          <!-- Heroicon name: outline/bell -->
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-          </svg>
-<%
-=end%>
+          <img class="hidden lg:block h-6 w-auto mx-8" src="https://cdn-icons-png.flaticon.com/512/5484/5484426.png" alt="Panier">
         </button>
+
+        <%#=begin%>
+          <%# <span class="sr-only">View notifications</span> %>
+          <!-- Heroicon name: outline/bell -->
+          <%# <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"> %>
+            <%# <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /> %>
+          <%# </svg> %>
+        <%#=end%>
 
 <!-- This is the searchbar component -->
       <%
@@ -84,7 +82,7 @@
         <!-- Profile dropdown -->
         <div class="ml-3 relative">
           <div>
-            <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <button type="button" onclick="toggleProfile()" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <img class="h-8 w-8 rounded-full" src="https://img.freepik.com/vecteurs-libre/chat-mignon-assis-dessin-anime-vecteur-icone-illustration-concept-icone-nature-animale-isole-vecteur-premium-style-dessin-anime-plat_138676-4148.jpg?w=1060&t=st=1661849747~exp=1661850347~hmac=82a44c8811179ecd18b4b40ec2289e9b5c121dbc540c9d5f1a8a74c51ab098ff" alt="">
             </button>
@@ -100,12 +98,12 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-900 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <div id="profileToggle" class=" transform opacity-0 scale-95 transition ease-out duration-100 absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-900 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-white" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Commandes</a>
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
           <!--  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</a> -->
-          <%= button_to  "Se déconnecter", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700" %>
+          <%= link_to  "Sign out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
           </div>
         </div>
     </div>
@@ -125,11 +123,36 @@
   </div>
 </nav>
 <script>
-  const navToggle = document.querySelectorAll('#navToggle');
 
-  const toggleShow = () => {
+  const navToggle = document.querySelectorAll('#navToggle');
+  const profileToggle = document.querySelectorAll('#profileToggle');
+  let open = false;
+
+  const toggleNav = () => {
     navToggle.forEach(element => {
       element.classList.toggle('hidden')
+    })
+  }
+
+  const toggleProfile = () => {
+    profileToggle.forEach(element => {
+
+      open = !open
+
+      // element.classList.toggle('hidden')
+
+      if (open) {
+        element.classList.replace('ease-in', 'ease-out')
+        element.classList.replace('duration-150', 'duration-300')
+        element.classList.replace('opacity-0', 'opacity-100')
+        element.classList.replace('scale-95', 'scale-100')
+      }
+      else {
+        element.classList.replace('ease-out', 'ease-in')
+        element.classList.replace('duration-300', 'duration-75')
+        element.classList.replace('opacity-100', 'opacity-0')
+        element.classList.replace('scale-100', 'scale-95')
+      }
     })
   }
 </script>
