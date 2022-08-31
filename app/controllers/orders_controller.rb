@@ -8,7 +8,19 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = order.new(order_params)
+    @order = Order.new(order_params)
+    @user = current_user
+    @cart = @user.cart
+    @items = current_user.cart.items
+
+    @items.each do |item|
+      Orderitem.create!(order_id: @order.id, item_id: item.id)
+    end
+
+    @total = 0
+    @items.each do |item|
+      @total += item.price
+    end
 
     respond_to do |format|
       if @order.save
