@@ -7,11 +7,10 @@
   <p><%= item.price  %></p>
   <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4 shadow-lg max-h-72" %>
   <div class="flex justify-center">
-    <% if action_name != "show" %>
-      <%= link_to "Show this item", item, class: "btn" %>
-      <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
-      <%= button_to 'Add to cart', cart_items_path, method: :post, params: {item: item}, class: "btn" %>
+  <% if action_name != "admin/show" %>
+      <%= link_to 'Edit', edit_item_path(item), class: "btn" %>
+      <%= button_to 'Delete', item_path(item), method: :delete, class: "btn" %>
       <hr class="mt-6">
-    <% end %>
+      <% end %>
   </div>
 </div>
