@@ -7,11 +7,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Welcome to Chaton-Shop")
   end
 
-  def email_order(order)
-    @order = order
-    @user = user.order
-    @url = "https://kittenfest.herokuapp.com/"
-    @items = items.order
-    mail(to: @user.email, subject: 'Order on CatShop')
-  end
+  # def email_order(order)
+
+  # end
 end
