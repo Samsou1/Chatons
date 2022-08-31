@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'items#index'
   resources :items
   resources :carts
+  resources :cart_items, only: %i[create destroy]
+  resources :order_items, only: %i[create destroy]
   devise_for :users
   post 'checkout/create' => 'checkout#create', as: 'checkout_create'
   resources :webhooks, only: [:create]
