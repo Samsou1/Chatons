@@ -2,15 +2,13 @@ require 'faker'
 
 Faker::UniqueGenerator.clear
 
-User.create(email: 'email@yopmail.com', password: 'adminpassword', admin: true)
-Cart.create(user_id: User.first.id)
+User.create(email: 'admin@yopmail.com', password: 'adminpassword', admin: true)
 
 until User.count == 10
   user = User.create!(
     email: Faker::Internet.email(domain: 'yopmail'),
     password: Faker::Internet.password(min_length: 8)
   )
-  Cart.create(user_id: user.id)
 end
 
 kittens = Unsplash::Photo.search('kitten', 1, 20)
