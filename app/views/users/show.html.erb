@@ -1,0 +1,18 @@
+<p>Bienvenue ! </p>
+
+<div>
+  <%if @user.profile_picture.attached?%>
+    <%= image_tag @user.profile_picture, alt: 'avatar' %>
+      <h3>Changer d'avatar ?</h3>
+      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+        <%= file_field_tag :profile_picture %>
+        <%= submit_tag "Mettre à jour ton avatar" %>
+      <% end %>
+  <%else%>
+      <h3>Changer d'avatar ?</h3>
+      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+        <%= file_field_tag :profile_picture %>
+        <%= submit_tag "Mettre à jour ton avatar" %>
+      <% end %>
+  <%end%>
+</div>
