@@ -1,2 +1,7 @@
 Profile
 Email: <%= @user.email%><br>
+Orders:
+<% @orders.each_with_index do |order, index|%>
+  Order number: <%=order.id%><br>
+  Date of order: <%=order.created_at%><br>
+<%end%>

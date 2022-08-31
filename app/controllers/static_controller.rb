@@ -5,6 +5,11 @@ class StaticController < ApplicationController
 
   def profile
     @user = current_user
-    puts @user
+    @orders = Order.where(user_id: current_user.id)
+    @oderitems = []
+    @orders.each do |order|
+      orderitems = Odertitems.where(order_id: order.id)
+      @orderitems.push(orderitems)
+    end
   end
 end
