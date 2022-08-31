@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static#about'
   get '/profile', to: 'static#profile'
   resources :items
-  resources :items do
+  resources :items, only: [:show] do
     resources :images, only: [:create]
   end
   resources :carts
