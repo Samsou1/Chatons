@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'admins/index'
+  namespace :admins do
+    get 'items/show'
+    get 'items/new'
+    get 'items/edit'
+    get 'items/update'
+    get 'items/destroy'
+    get 'users/edit'
+    get 'users/update'
+    get 'users/destroy'
+  end
+  get 'admins/edit'
   root 'items#index'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
