@@ -5,7 +5,18 @@
   <p class="capitalize"><%= item.description %></p>
   <h3 class="mt-4">Price:</h3>
   <p><%= item.price  %></p>
-  <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4 shadow-lg max-h-72" %>
+  <%if item.image.attached?%>
+  <%= image_tag item.image, alt: 'Photographie' %>
+  <%= form_tag item_images_path(item), multipart: true do %>
+    <%= file_field_tag :image %>
+    <%= submit_tag "Modifier l'illustration" %>
+  <% end %>
+<%else%>
+  <%= form_tag item_images_path(item), multipart: true do %>
+    <%= file_field_tag :image %>
+    <%= submit_tag "Modifier l'illustration" %>
+  <% end %>
+<%end%>
   <div class="flex justify-center">
     <% if action_name != "show" %>
       <%= link_to "Show this item", item, class: "btn" %>
