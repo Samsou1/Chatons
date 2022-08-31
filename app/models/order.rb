@@ -3,6 +3,7 @@ class Order < ApplicationRecord
 
   has_many :orderitems
   has_many :items, through: :orderitems
+  belongs_to :user
 
   after_create :order_send
 

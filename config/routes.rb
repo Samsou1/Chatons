@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'items#index'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
+  get '/profile', to: 'static#profile'
   resources :items
   resources :carts
   resources :cart_items, only: %i[create destroy]

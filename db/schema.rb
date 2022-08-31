@@ -76,8 +76,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_31_091607) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
