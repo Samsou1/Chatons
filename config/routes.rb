@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create destroy]
   resources :order_items, only: %i[create destroy]
   devise_for :users
+  resources :users, only: [:show]
   post 'checkout/create' => 'checkout#create', as: 'checkout_create'
   resources :webhooks, only: [:create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

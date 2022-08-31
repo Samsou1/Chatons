@@ -148,7 +148,6 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.5.6)
     multi_json (1.15.0)
@@ -168,9 +167,6 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.10)
@@ -224,7 +220,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    rb-fsevent (0.11.1)
+    rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.8.0)
@@ -277,8 +273,6 @@ GEM
     stripe (7.1.0)
     strscan (3.0.4)
     table_print (1.5.7)
-    tailwindcss-rails (2.0.12)
-      railties (>= 6.0.0)
     tailwindcss-rails (2.0.12-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -313,7 +307,6 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -354,4 +347,4 @@ RUBY VERSION
    ruby 3.0.4p208
 
 BUNDLED WITH
-   2.3.7
+   2.3.21
