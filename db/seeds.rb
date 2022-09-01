@@ -2,7 +2,7 @@ require 'faker'
 
 Faker::UniqueGenerator.clear
 
-User.create(email: 'admin@yopmail.com', password: 'adminpassword', admin: true)
+User.create(email: 'admin@yopmail.com', password: 'adminpassword', role: User.roles[:admin])
 
 until User.count == 10
   User.create!(
