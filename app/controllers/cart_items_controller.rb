@@ -11,17 +11,11 @@ class CartItemsController < ApplicationController
     @cartitem = Cartitem.new(cart_id: @cart.id, item_id: params[:item])
     respond_to do |_format|
       if @cartitem.save
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.js {}
-        end
-        flash[:notice] = 'Item added to cart'
+        flash[:success] = 'Item added to your cart'
+        redirect_to root_path
       else
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.js {}
-        end
-        flash[:notice] = 'Please try again'
+        flash[:danger] = 'Please try again'
+        redirect_to root_path 
       end
     end
   end
