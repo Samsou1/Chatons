@@ -1,15 +1,17 @@
 class CheckoutsController < ApplicationController
   def create
-    @total = 0
-    @cart = current_user.cart
-    @items = @cart.items
+    total = 0
+    @order = Order.create(user_id: current_user.id, total: total)
+    @user = current_user
+    @cart = @user.cart
+    @items = current_user.cart.items
 
     @items.each do |item|
-      @total += item.price
+      Orderitem.create!(order_id: @order.id, item_id: item.id)
+      total += item.price
     end
 
-    @order = Order.create(user_id: current_user.id)
-    @order.total = @total
+    @order.update(total: total)
 
     @session = Stripe::Checkout::Session.create(
       {
@@ -20,7 +22,7 @@ class CheckoutsController < ApplicationController
         line_items: [{
           quantity: 1,
           price_data: {
-            unit_amount: 2000,
+            unit_amount: (total * 100).to_i,
             currency: 'eur',
             product_data: {
               name: 'Kitten pictures'

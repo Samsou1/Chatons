@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.total = 0
   end
 
   def index
@@ -13,16 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(user_id: current_user.id, total: total)
-    @user = current_user
-    @cart = @user.cart
-    @items = current_user.cart.items
-    total = 0
 
-    @items.each do |item|
-      Orderitem.create!(order_id: @order.id, item_id: item.id)
-      total += item.price
-    end
 
     respond_to do |format|
       if @order.save
