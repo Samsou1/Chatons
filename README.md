@@ -6,7 +6,7 @@ Le site est en prod ici  [Kittenfest](https://kittenfest.herokuapp.com/)
 
 ## Database 💾
 
-![MVC](ddatabase..png)
+![MVC](database.png)
 
 ## Technos utilisées ⚙️
 
@@ -21,12 +21,12 @@ Le site est en prod ici  [Kittenfest](https://kittenfest.herokuapp.com/)
 <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
 
 ## Crédit 🔗
-[Pierre Andrieu](https://github.com/PierreAND)
+[Pierre Andrieu](https://github.com/PierreAND)<br>
 [Gregory Laigneau](https://github.com/GregoryLAIGNEAU)<br>
 [Sam Linard](https://github.com/Samsou1)<br>
 [Noellie Peuch](https://github.com/pandaka87)<br>
 [Chris Pfeiffer](https://github.com/chrispfr)<br>
-[Pierre-François Salmand](https://github.com/Pefington)<br>
+[Pierre-François Salmand](https://github.com/Pefington)
 
 
 
