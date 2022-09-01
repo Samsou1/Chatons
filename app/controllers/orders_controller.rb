@@ -5,23 +5,14 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.total = 0
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.all.where(user_id: current_user.id)
   end
 
   def create
-    @order = Order.new(order_params)
-    @user = current_user
-    @cart = @user.cart
-    @items = current_user.cart.items
 
-    @items.each do |item|
-      Orderitem.create!(order_id: @order.id, item_id: item.id)
-      @order.total += item.price
-    end
 
     respond_to do |format|
       if @order.save

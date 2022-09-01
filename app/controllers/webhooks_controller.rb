@@ -8,15 +8,15 @@ class WebhooksController < ApplicationController
 
     begin
       event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials[:stripe][:webhook]
+        payload, sig_header, Rails.application.credentials.stripe[:webhook]
       )
     rescue JSON::ParserError => e
       status 400
       return
     rescue Stripe::SignatureVerificationError => e
       # Invalid signature
-      puts 'Signature error'
-      p e
+      Rails.logger.debug 'Signature error'
+      Rails.logger.debug e
       return
     end
 
@@ -24,9 +24,9 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       session = event.data.object
-      post = Post.find_by(id: session.metadata.post_id)
-      post.is_paid = true
-      post.save!
+      order = Order.find_by(id: session.metadata.order_id)
+      order.paid = true
+      order.save!
     end
 
     render json: { message: 'success' }
