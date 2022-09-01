@@ -1,6 +1,6 @@
 class CheckoutsController < ApplicationController
   def create
-    @order = Order.create!(order_params)
+    @order = Order.create!(user_id: current_user.id, total: 0)
     @total = @order.total
     @session = Stripe::Checkout::Session.create(
       {
