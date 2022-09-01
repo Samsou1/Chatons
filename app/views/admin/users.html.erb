@@ -10,6 +10,7 @@
     <h3 class="mt-4">Role:</h3>
     <p><%= user.role %></p>
     <div class="flex justify-center">
+      <%= link_to 'Edit', user_path(user), class: "btn" %>
     </div>
   </div>
 <% end %>
