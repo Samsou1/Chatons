@@ -30,14 +30,9 @@ class CheckoutsController < ApplicationController
       }
     )
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to orders_url(@order), notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    redirect_to @session.url, allow_other_host: true
+
+    rescue Stripe::InvalidRequestError => e
+      redirect_to cart_url(current_user.cart), alert: e.message
     end
   end
-end

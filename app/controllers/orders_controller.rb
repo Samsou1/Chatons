@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     @order.total = 0
   end
 
+  def index
+    @orders = Order.all.where(user_id: current_user.id)
+  end
+
   def create
     @order = Order.new(user_id: current_user.id, total: total)
     @user = current_user
