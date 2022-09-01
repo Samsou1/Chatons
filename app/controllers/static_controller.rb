@@ -42,13 +42,5 @@ class StaticController < ApplicationController
         @total_price += item.price
       end
     end
-    puts "$"*30
-    puts @items
-    puts @items.keys
-    puts @items.values
-    puts @items.keys[0]
-    puts @items.values[0]
-    puts @items.keys[0].title
-    puts "$"*30
   end
 end
