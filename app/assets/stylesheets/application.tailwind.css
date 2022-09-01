@@ -19,6 +19,10 @@
   .btn {
     @apply text-center py-2 px-3 m-2 sm:m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
   }
+
+  .btn-warning {
+    @apply w-auto text-white text-sm font-bold p-3 m-3 rounded bg-red-600 hover:bg-red-500 focus:outline-none cursor-pointer justify-self-end
+  }
 }
 
 @layer utilities {

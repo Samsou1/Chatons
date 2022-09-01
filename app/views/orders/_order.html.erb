@@ -1,0 +1,7 @@
+<div id="<%= dom_id order %>">
+  <% if action_name != "show" %>
+    <%= link_to "Show this order", order, class: "btn" %>
+    <%= link_to 'Edit this order', edit_order_path(order), class: "btn" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

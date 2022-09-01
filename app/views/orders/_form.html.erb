@@ -1,10 +1,10 @@
-<%= form_with(model: cart, class: "contents") do |form| %>
-  <% if cart.errors.any? %>
+<%= form_with(model: order, class: "contents") do |form| %>
+  <% if order.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(cart.errors.count, "error") %> prohibited this cart from being saved:</h2>
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
       <ul>
-        <% cart.errors.each do |error| %>
+        <% order.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
