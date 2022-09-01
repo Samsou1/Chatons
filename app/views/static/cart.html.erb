@@ -11,6 +11,7 @@
     <%= link_to 'Back to carts', carts_path, class: "ml-2 rounded-lg py-3 px-5 bg-green-600 inline-block font-medium" %>
   </div>
 </div>
+
  <div class="container mx-auto mt-10">
     <div class="flex shadow-md my-10">
       <div class="w-3/4 bg-gray-700 px-10 py-10">
@@ -22,14 +23,17 @@
         </div>
       <div class="flex items-center hover:bg-gray-700 -mx-8 px-6 py-5">
         <ul>
-        <% @items.each_with_index do |item, index|%>
+        <% @items.keys.each_with_index do |item, index|%>
           Photo n° <%=index + 1%>
           <%= button_to 'X', cart_item_path(@cartitems[index].id), method: :delete, class: " rounded-lg py-0.5 px-2 bg-red-400 font-medium ml-60" %>
-          <li><%=item.title%></li>
-          <li><%=item.description%></li>
-          <li><%=item.price%></li>
+          <li>Title:<%=item.title%></li>
+          <li>Description:<%=item.description%></li>
+          <li>Price:<%=item.price%></li>
+          <li>Qty:<%=@items.values[index]%></li>
+          <li>Value:<%= item.price * @items.values[index]%></li>
           <li class="h-40 w-40"><%=image_tag item.image_url%></li>
           <%  @cartitems[index].id%>
+          <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
           <br>
         <%end%>
         </ul>
