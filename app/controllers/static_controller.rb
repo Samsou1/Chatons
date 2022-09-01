@@ -19,4 +19,24 @@ class StaticController < ApplicationController
       @items.push(ary)
     end
   end
+
+  def cart
+    unless user_signed_in?
+      redirect_to root_path
+      return
+    end
+    if Cart.where(user_id: current_user.id).count == 0
+      redirect_to root_path
+    else
+      @cart = Cart.find_by(user_id: current_user.id)
+      @cartitems = Cartitem.where(cart_id: @cart.id)
+      @items = []
+      @total_price = 0
+      @cartitems.each do |cartitem|
+        item = Item.find(cartitem.item_id)
+        @items.push(item)
+        @total_price += item.price
+      end
+    end
+  end
 end

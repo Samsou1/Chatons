@@ -6,22 +6,24 @@
   <h3 class="mt-4">Price:</h3>
   <p><%= item.price  %></p>
   <%if item.image.attached?%>
-  <%= image_tag item.image, alt: 'Photographie' %>
-  <%= form_tag item_images_path(item), multipart: true do %>
-    <%= file_field_tag :image %>
-    <%= submit_tag "Modifier l'illustration" %>
-  <% end %>
-<%else%>
-  <%= form_tag item_images_path(item), multipart: true do %>
-    <%= file_field_tag :image %>
-    <%= submit_tag "Modifier l'illustration" %>
-  <% end %>
-<%end%>
+    <%= image_tag item.image, alt: 'Photographie' %>
+    <%= form_tag item_images_path(item), multipart: true do %>
+      <%= file_field_tag :image %>
+      <%= submit_tag "Modifier l'illustration" %>
+    <% end %>
+  <%else%>
+    <%= form_tag item_images_path(item), multipart: true do %>
+      <%= file_field_tag :image %>
+      <%= submit_tag "Modifier l'illustration" %>
+    <% end %>
+  <%end%>
   <div class="flex justify-center">
     <% if action_name != "show" %>
       <%= link_to "Show this item", item, class: "btn" %>
-      <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
-      <%= button_to 'Add to cart', cart_items_path, method: :post, params: {item: item}, class: "btn" %>
+      <% if user_signed_in? %>
+        <%= link_to 'Edit this item', edit_item_path(item), class: "btn" %>
+        <%= button_to 'Add to cart', cart_items_path, method: :post, params: {item: item}, class: "btn" %>
+      <% end %>
       <hr class="mt-6">
     <% end %>
   </div>

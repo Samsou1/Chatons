@@ -1,3 +1,4 @@
+<%# WARNING: THE CART SHOWED IN /CART IS MADE BY THE STATIC CONTROLER METHOD CART %>
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <% if notice.present? %>
@@ -33,8 +34,23 @@
       </ul>
       <div class="flex justify-end mt-4 space-x-2">
         <%= link_to 'Continue shopping', items_path, class: "ml-2 rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium" %>
-        <%= link_to 'Paiement', carts_path, class: "ml-2 rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium" %>
+        <%= button_to 'Pay now', checkouts_create_path, data: { turbo: false }, class: "ml-2 rounded-lg py-3 px-5 bg-blue-400 inline-block font-medium" %>
       </div>
     </div>
   </div>
 </div>
+Items<br>
+<% @items.each_with_index do |item, index|%>
+  Item n° <%=index + 1%><br>
+  <%=item.title%><br>
+  <%=item.description%><br>
+  <%=item.image_url%><br>
+  <%=item.price%><br>
+  <%  @cartitems[index].id%>
+  <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <br>
+<%end%><br>
+<br>
+Total price:<%=@total_price%>
+<%# WARNING: THE CART SHOWED IN /CART IS MADE BY THE STATIC CONTROLER METHOD CART %>
+
