@@ -1,6 +1,6 @@
-<div class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/4 lg:mx-2 sm:my-8 text-5xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500">Welcome <%= @user.first_name %> ! </div>
+<div class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/4 lg:mx-2 sm:my-8 sm:text-xl md:text-2xl lg:text-3xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 text-center">Welcome <%= @user.first_name %> ! </div>
 
-  <div class="w-1/2 h-4/6 flex flex-row grid grid-cols-3 gap-4 items-center justify-between p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 shadow-lg shadow-purple-900/50">
+  <div class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/2 xl:h-4/6 flex flex-row flex-wrap grid grid-cols-3 gap-4 items-center justify-between p-4 my-4 rounded-lg gradient shadow-lg shadow-purple-900/50">
     <div class="col-span-1 p-5 m-5 justify-center">
       <%if @user.profile_picture.attached?%>
         <%= image_tag @user.profile_picture, alt: 'avatar', class: "rounded-lg m-4 shadow-lg max-h-72" %>
@@ -19,14 +19,14 @@
       <%end%>
     </div>
     <div class="col-span-2 p-5 m-5 rounded-lg shadow-lg max-h-72 bg-white bg-opacity-75">
-      <h3 class="mt-4 text-2xl">Name:</h3>
+      <h3 class="mt-4">Name:</h3>
       <p class="font-style: italic text-pink-600"><%= @user.first_name %> <%= @user.last_name %></p>
-      <h3 class="mt-4 text-2xl">Adress:</h3>
+      <h3 class="mt-4">Adress:</h3>
       <p class="text-pink-600"><%= @user.address %></p>
       <p class="text-pink-600"><%= @user.zip_code %> <%= @user.city %></p>
     </div>
   </div>
-    <div class="p-5 m-5 justify-center">
+    <div class="p-5 m-5 justify-center flex flex-wrap">
         <%= link_to 'Edit this user', edit_user_registration_path(@user), class: "btn" %>
         <%= link_to 'View my orders', user_orders_path(@user), class: "btn" %>
     </div>

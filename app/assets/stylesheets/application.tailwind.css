@@ -5,11 +5,11 @@
 @layer base {
 
   h3 {
-    @apply text-xl font-bold text-transparent bg-clip-text gradient w-min drop-shadow-lg shadow-black
+    @apply sm:text-base md:text-xl lg:text-2xl font-bold text-transparent bg-clip-text gradient w-min drop-shadow-lg shadow-black 
   }
 
   p {
-    @apply text-base font-semibold my-2
+    @apply sm:text-sm md:text-base lg:text-xl font-semibold my-2
   }
 }
 
@@ -17,7 +17,7 @@
 @layer components {
 
   .btn {
-    @apply text-center py-2 px-3 m-2 sm:m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
+    @apply text-center sm:text-sm md:text-base lg:text-xl py-2 px-3 m-2 sm:m-4 bg-gray-100 text-gray-800 rounded-lg shadow-md my-4 font-semibold hover:gradient-light;
   }
 
   .btn-warning {
@@ -28,7 +28,7 @@
 @layer utilities {
 
   .gradient {
-    @apply bg-gradient-to-r from-cyan-400 to-pink-400;
+    @apply bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500;
   }
 
   .gradient-light {
