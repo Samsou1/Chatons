@@ -8,4 +8,8 @@ class AdminController < ApplicationController
   def items
     @items = Item.all
   end
+
+  def orders
+    @orders = Order.all
+  end
 end

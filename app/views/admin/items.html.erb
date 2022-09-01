@@ -11,12 +11,9 @@
     <p><%= item.price  %></p>
     <%= image_tag item.image_url, class: "my-2 rounded-lg mt-4 shadow-lg max-h-72" %>
     <div class="flex justify-center">
-      <% if action_name != "show" %>
-          <%= link_to 'Edit', edit_item_path(item), class: "btn" %>
-          <%= link_to 'Create', new_item_path, class: "btn" %>
-          <%= button_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
-        <hr class="mt-6">
-      <% end %>
+      <%= link_to 'Edit', edit_item_path(item), class: "btn" %>
+      <%= link_to 'Create', new_item_path, class: "btn" %>
+      <%= button_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
     </div>
   </div>
 <% end %>
