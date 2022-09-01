@@ -3,12 +3,12 @@ require 'uri'
 
 Faker::UniqueGenerator.clear
 
-User.create(email: 'admin@yopmail.com', password: 'adminpassword', role: User.roles[:admin])
+User.create(email: 'kittenfest-admin@yopmail.com', password: 'adminpassword', role: User.roles[:admin])
 
 
 until User.count == 10
   User.create!(
-    email: Faker::Internet.email(domain: 'yopmail.com'),
+    email: Faker::Internet.unique.email(domain: 'yopmail.com'),
     password: Faker::Internet.password(min_length: 8),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -30,5 +30,3 @@ kittens = Unsplash::Photo.search('kitten', 1, 20)
   file = URI.open(kittens[i].urls.regular)
   Item.last.image.attach(io: file, filename: 'kitten-image.jpg')
 end
-
-
