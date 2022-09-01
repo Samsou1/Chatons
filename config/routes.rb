@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :images, only: [:create]
   end
   resources :carts
+  resources :orders, only: %i[create]
   resources :cart_items, only: %i[create destroy]
   resources :order_items, only: %i[create destroy]
   devise_for :users
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :profile_pictures, only: [:create]
   end
-  post 'checkout/create' => 'checkout#create', as: 'checkout_create'
+  post 'checkouts/create' => 'checkouts#create', as: 'checkouts_create'
   resources :webhooks, only: [:create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

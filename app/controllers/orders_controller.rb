@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.total = 0
   end
 
   def create
@@ -15,11 +16,7 @@ class OrdersController < ApplicationController
 
     @items.each do |item|
       Orderitem.create!(order_id: @order.id, item_id: item.id)
-    end
-
-    @total = 0
-    @items.each do |item|
-      @total += item.price
+      @order.total += item.price
     end
 
     respond_to do |format|
@@ -37,6 +34,6 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params.require(:order).permit(:user_id)
+    params.require(:order).permit(:user_id, :total)
   end
 end
