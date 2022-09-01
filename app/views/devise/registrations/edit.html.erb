@@ -2,22 +2,21 @@
   <h2 class="text-4xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500">Edit <%= resource_name.to_s.humanize %></h2>
 
   <div class="p-10 md:w-[500px] flex flex-col gap-4 items-center justify-between my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 shadow-lg shadow-purple-900/50">
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_with(model: @user, class: "contents") do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="mb-5">
+      <div class="mb-5 w-full">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
       </div>
 
-      <div class="mb-5">
+      <div class="mb-5 w-full">
         <a>Name</a><br/>
         <%= f.text_field :last_name, placeholder: "Last name", autofocus: true, autocomplete: "last_name", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
         <%= f.text_field :first_name, placeholder: "First name", autofocus: true, autocomplete: "first_name", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
       </div>
 
-      <div class="mb-5">
+      <div class="mb-5 w-full">
         <a>Address</a><br/>
         <%= f.text_field :address, placeholder: "N° Street", autofocus: true, autocomplete: "address", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
         <%= f.text_field :zip_code, placeholder: "Zip Code", autofocus: true, autocomplete: "zip_code", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
@@ -28,7 +27,7 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div>
+      <div class="mb-5 w-full">
         <%= f.label :password %> <i class="text-sm font-light">(leave blank if you don't want to change it)</i><br />
         <%= f.password_field :password, placeholder: "************", autocomplete: "new-password", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
         <% if @minimum_password_length %>
@@ -37,17 +36,17 @@
         <% end %>
       </div>
 
-      <div class="my-5">
+      <div class="mb-5 w-full">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, placeholder: "************", autocomplete: "new-password", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
       </div>
 
-      <div>
+      <div class="mb-5 w-full">
         <%= f.label :current_password %><br />
         <%= f.password_field :current_password, placeholder: "************", autocomplete: "current-password", class: "text-gray-800 text-sm font-light w-full rounded-lg" %>
       </div>
 
-      <div>
+      <div class="mb-5 w-full">
         <%= f.submit "Update", class: "w-full text-center text-white font-bold py-3 rounded bg-cyan-500 hover:bg-cyan-400 focus:outline-none mt-4 cursor-pointer" %>
       </div>
     <% end %>
