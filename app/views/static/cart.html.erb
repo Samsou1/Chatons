@@ -1,29 +1,31 @@
  <div class="container mx-auto mt-10">
     <div class="flex shadow-md my-10">
-      <div class="w-3/4 bg-gray-700 px-10 py-10">
+      <div class="w-3/4 bg-gray-700 px-10 py-10 rounded-lg">
         <div class="flex justify-between border-b pb-8">
           <h1 class="text-xl font-bold tracking-wider capitalize">Shopping Cart</h1>
         </div>
-        <div class="flex mt-10 mb-5">
-          <h3 class="font-semibold text-gray-500 text-xs uppercase w-2/5">Product Details</h3>
+        <div class="flex justify-center mt-10 mb-5">
+          <h3 class="text-center font-semibold text-gray-300 text-lg uppercase w-2/5 w-full">Products</h3>
         </div>
-      <div class="flex items-center hover:bg-gray-700 -mx-8 px-6 py-5">
-        <ul>
+      <div class="flex flex-col -mx-8 px-6 bg-gray-800 rounded-lg">
+
         <% @items.keys.each_with_index do |item, index|%>
-          Photo n° <%=index + 1%>
-          <li>Title:<%=item.title%></li>
-          <li>Description:<%=item.description%></li>
-          <li>The unit price:<%=item.price%></li>
-          <li>Qty:<%=@items.values[index]%></li>
-          <li>Value:<%= item.price * @items.values[index]%></li>
-          <li class="h-40 w-40"><%=image_tag item.image_url%></li>
-          <%= button_to 'Remove item', cart_item_path(Cartitem.where(item_id:item.id)[0]), method: :delete, class: "btn" %>
-          <br>
+          <p class="text-xl">Photo n° <%=index + 1%></p>
+          <h3>Title:</h3><p><%=item.title%></p>
+          <h3>Description:</h3><p><%=item.description%></p>
+          <h3>The&nbsp;unit&nbsp;price:</h3><p><%=item.price%></p>
+          <h3>Qty:</h3><p><%=@items.values[index]%></p>
+          <h3>Value:</h3><p><%= item.price * @items.values[index]%></p>
+          <%=image_tag item.image_url, class: "rounded-lg my-8"%>
+          <%= button_to 'Remove item', cart_item_path(Cartitem.where(item_id:item.id)[0]), method: :delete, class: "btn-warning mb-12" %>
+          <hr class="mb-4">
         <%end%>
-        </ul>
+
       </div>
-      Total price:<%=@total_price%>
-      <div class="flex justify-end mt-4 space-x-2">
+      <div class="flex items-center justify-between mt-4 space-x-2">
+      <div class="flex flex-col items-center">
+        <h3>Total&nbsp;price:</h3><p class="text-2xl"><%=@total_price%>€</p>
+      </div>
         <%= link_to 'Continue shopping', items_path, class: "btn" %>
         <%= button_to 'Pay now', checkouts_create_path, data: { turbo: false }, class: "btn" %>
       </div>
