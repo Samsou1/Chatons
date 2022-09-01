@@ -2,9 +2,9 @@
   <p>
     <%= link_to "Admin", admin_path %><%= " > #{params[:action].capitalize}" unless params[:action].eql?("index") %>
   </p>
-  <div class="btn-group">
+  <div class="btn-group mt-5">
     <%= render "admin/link", resource: Item %>
     <%= render "admin/link", resource: User %>
     <%= render "admin/link", resource: Order %>
-  </div>
+  </div class="pb-32">
 </div>
