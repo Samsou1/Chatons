@@ -21,10 +21,13 @@ Le site est en prod ici  [Kittenfest](https://kittenfest.herokuapp.com/)
 <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
 
 ## Crédit 🔗
-[Chris Pfeiffer](https://github.com/chrispfr)<br>
-[Sam Linard](https://github.com/Samsou1)<br>
-[Pierre-François Salmand](https://github.com/Pefington)<br>
-[Noellie Peuch](https://github.com/pandaka87)<br>
-[Gregory Laigneau](https://github.com/GregoryLAIGNEAU)<br>
 [Pierre Andrieu](https://github.com/PierreAND)
+[Gregory Laigneau](https://github.com/GregoryLAIGNEAU)<br>
+[Sam Linard](https://github.com/Samsou1)<br>
+[Noellie Peuch](https://github.com/pandaka87)<br>
+[Chris Pfeiffer](https://github.com/chrispfr)<br>
+[Pierre-François Salmand](https://github.com/Pefington)<br>
+
+
+
 
