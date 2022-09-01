@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create destroy]
   resources :order_items, only: %i[create destroy]
   devise_for :users
-  resources :users, only: %i[show]
+  resources :users
   resources :users, only: [:show] do
     resources :profile_pictures, only: [:create]
     resources :orders, only: %i[show index]

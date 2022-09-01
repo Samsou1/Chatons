@@ -5,7 +5,7 @@
 @layer base {
 
   h3 {
-    @apply text-xl font-bold text-transparent bg-clip-text gradient w-min
+    @apply text-xl font-bold text-transparent bg-clip-text gradient w-min shadow-mg
   }
 
   p {
