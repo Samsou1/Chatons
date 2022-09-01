@@ -24,9 +24,9 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       session = event.data.object
-      post = Post.find_by(id: session.metadata.post_id)
-      post.is_paid = true
-      post.save!
+      order = Order.find_by(id: session.metadata.order_id)
+      order.paid = true
+      order.save!
     end
 
     render json: { message: 'success' }
