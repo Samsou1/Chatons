@@ -1,4 +1,5 @@
 require 'faker'
+require 'uri'
 
 Faker::UniqueGenerator.clear
 
@@ -26,4 +27,8 @@ kittens = Unsplash::Photo.search('kitten', 1, 20)
     price: Faker::Number.decimal(l_digits: 2, r_digits: 2),
     image_url: kittens[i].urls.regular
   )
+  file = URI.open(kittens[i].urls.regular)
+  Item.last.image.attach(io: file, filename: 'kitten-image.jpg')
 end
+
+
