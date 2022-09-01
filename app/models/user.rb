@@ -9,6 +9,7 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
   after_create :welcome_send
 
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end

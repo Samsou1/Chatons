@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :user
-
+  validates :total, presence: true
   has_many :orderitems
   has_many :items, through: :orderitems
   belongs_to :user

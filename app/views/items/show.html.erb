@@ -7,7 +7,9 @@
   <%#= button_to 'Destroy this item', item_path(@item), method: :delete, class: "btn" %>
   <div class="flex flex-col items-center justify-center sm:flex-row">
     <%= link_to 'Add to cart', items_path, class: "btn" %>
-    <%= link_to 'Back to pictures', items_path, class: "btn" %>
-    <%= button_to 'Add to cart', cart_items_path, method: :post, params: {item: @item}, class: "btn" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Back to pictures', items_path, class: "btn" %>
+      <%= button_to 'Add to cart', cart_items_path, method: :post, params: {item: @item}, class: "btn" %>
+    <% end%>
   </div>
 </div>
