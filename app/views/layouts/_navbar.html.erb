@@ -37,11 +37,9 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
-
-            <a href="/about" class=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-
-            <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact us</a>
+            <%= link_to "Home", root_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
+            <%= link_to "About", about_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
+            <%= link_to "Contact", contact_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"%>
 
           </div>
         </div>
@@ -116,12 +114,9 @@
   <div x-show="burgerOpen" @click.outside="burgerOpen = false" x-cloak>
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
-
-      <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-
-      <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact us</a>
-
+      <%= link_to "Home", root_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-base font-medium"%>
+      <%= link_to "About", about_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-base text-sm font-medium"%>
+        <%= link_to "Contact", contact_path, class:"text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-base text-sm font-medium"%>
     </div>
   </div>
 </nav>
