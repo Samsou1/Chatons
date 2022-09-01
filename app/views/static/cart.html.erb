@@ -13,7 +13,7 @@
           Photo n° <%=index + 1%>
           <li>Title:<%=item.title%></li>
           <li>Description:<%=item.description%></li>
-          <li>Price:<%=item.price%></li>
+          <li>The unit price:<%=item.price%></li>
           <li>Qty:<%=@items.values[index]%></li>
           <li>Value:<%= item.price * @items.values[index]%></li>
           <li class="h-40 w-40"><%=image_tag item.image_url%></li>
