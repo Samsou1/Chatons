@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'admin', to: 'admin#index'
     get 'admin/users'
     get 'admin/items'
+    get 'admin/orders'
   end
   root 'items#index'
   
