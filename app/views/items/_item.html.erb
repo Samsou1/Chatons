@@ -6,11 +6,7 @@
   <h3 class="mt-4">Price:</h3>
   <p><%= item.price  %></p>
   <%if item.image.attached?%>
-    <%= image_tag item.image, alt: 'Photographie' %>
-    <%= form_tag item_images_path(item), multipart: true do %>
-      <%= file_field_tag :image %>
-      <%= submit_tag "Modifier l'illustration" %>
-    <% end %>
+    <%= image_tag item.image, class: "max-h-[300px]", alt: 'Photographie' %>
   <%else%>
     <%= form_tag item_images_path(item), multipart: true do %>
       <%= file_field_tag :image %>

@@ -4,23 +4,44 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
     <%= render @cart %>
-    <%= link_to 'Edit this cart', edit_cart_path(@cart), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this cart', edit_cart_path(@cart), class: "mt-2 rounded-lg py-3 px-5 bg-green-600 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this cart', cart_path(@cart), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to 'Destroy this cart', cart_path(@cart), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-green-600 font-medium" %>
     </div>
-    <%= link_to 'Back to carts', carts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Back to carts', carts_path, class: "ml-2 rounded-lg py-3 px-5 bg-green-600 inline-block font-medium" %>
   </div>
 </div>
-Items<br>
-<% @items.each_with_index do |item, index|%>
-  Item n° <%=index + 1%><br>
-  <%=item.title%><br>
-  <%=item.description%><br>
-  <%=item.image_url%><br>
-  <%=item.price%><br>
-  <%  @cartitems[index].id%>
-  <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-  <br>
-<%end%><br>
-<br>
-Total price:<%=@total_price%>
+
+ <div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+      <div class="w-3/4 bg-gray-700 px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="text-xl font-bold tracking-wider capitalize">Shopping Cart</h1>
+        </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-500 text-xs uppercase w-2/5">Product Details</h3>
+        </div>
+      <div class="flex items-center hover:bg-gray-700 -mx-8 px-6 py-5">
+        <ul>
+        <% @items.keys.each_with_index do |item, index|%>
+          Photo n° <%=index + 1%>
+          <%= button_to 'X', cart_item_path(@cartitems[index].id), method: :delete, class: " rounded-lg py-0.5 px-2 bg-red-400 font-medium ml-60" %>
+          <li>Title:<%=item.title%></li>
+          <li>Description:<%=item.description%></li>
+          <li>Price:<%=item.price%></li>
+          <li>Qty:<%=@items.values[index]%></li>
+          <li>Value:<%= item.price * @items.values[index]%></li>
+          <li class="h-40 w-40"><%=image_tag item.image_url%></li>
+          <%  @cartitems[index].id%>
+          <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+          <br>
+        <%end%>
+        </ul>
+      </div>
+      Total price:<%=@total_price%>
+      <div class="flex justify-end mt-4 space-x-2">
+        <%= link_to 'Continue shopping', items_path, class: "ml-2 rounded-lg py-3 px-5 btn inline-block font-medium" %>
+        <%= button_to 'Pay now', checkouts_create_path, data: { turbo: false }, class: "ml-2 rounded-lg py-3 px-5 btn inline-block font-medium" %>
+      </div>
+     </div>
+  </div>
