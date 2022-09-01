@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     get 'admin/items'
   end
   root 'items#index'
-  get '/contact', to: 'static#contact'
-  get '/about', to: 'static#about'
-  get '/profile', to: 'static#profile'
-  get '/cart', to: 'static#cart'
+  
+  scope '/', controller: :static do
+    get :contact, :about, :profile, :cart
+  end
+
   resources :items
   resources :items, only: [:show] do
     resources :images, only: [:create]
