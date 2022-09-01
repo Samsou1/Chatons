@@ -62,12 +62,9 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
+    @cart = Cart.find(user_id: current_user.id)
     @cart.destroy
-
-    respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to root_path
   end
 
   private
