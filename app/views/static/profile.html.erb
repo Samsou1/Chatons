@@ -1,7 +1,21 @@
 Profile
 Email: <%= @user.email%><br>
+First name: <%= @user.first_name%><br>
+Last name: <%= @user.last_name%><br>
+Address: <%= @user.address%><br>
+Zip code: <%= @user.zip_code%><br>
+City: <%= @user.city%><br>
+<br>
 Orders:
 <% @orders.each_with_index do |order, index|%>
   Order number: <%=order.id%><br>
   Date of order: <%=order.created_at%><br>
+  <%@items[index].each do |item|%>
+    Title: <%=item.title%><br>
+    Description: <%=item.description%><br>
+    Price: <%=item.price%><br>
+    Url: <%=item.image_url%><br>
+    Quantity: 1<br>
+    <br>
+  <%end%><br>
 <%end%>
