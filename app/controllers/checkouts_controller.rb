@@ -31,8 +31,7 @@ class CheckoutsController < ApplicationController
     )
 
     redirect_to @session.url, allow_other_host: true
-
-    rescue Stripe::InvalidRequestError => e
-      redirect_to cart_url(current_user.cart), alert: e.message
-    end
+  rescue Stripe::InvalidRequestError => e
+    redirect_to cart_url(current_user.cart), alert: e.message
   end
+end

@@ -24,3 +24,6 @@ Rails/HasManyOrHasOneDependent:
 
 Metrics/MethodLength:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
