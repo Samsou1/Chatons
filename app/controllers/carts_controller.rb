@@ -9,6 +9,8 @@ class CartsController < ApplicationController
 
   # GET /carts/1 or /carts/1.json
   def show
+    # WARNING: THE CART SHOWED IN /CART IS MADE BY THE STATIC CONTROLER METHOD CART
+    @cart = Cart.find_by(user_id: current_user.id)
     @cartitems = Cartitem.where(cart_id: @cart.id)
     @items = []
     @total_price = 0
