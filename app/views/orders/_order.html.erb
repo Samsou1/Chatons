@@ -1,7 +1,6 @@
-<div id="<%= dom_id order %>">
-  <% if action_name != "show" %>
-    <%= link_to "Show this order", order, class: "btn" %>
-    <%= link_to 'Edit this order', edit_order_path(order), class: "btn" %>
-    <hr class="mt-6">
-  <% end %>
+<div id="<%= dom_id order %>" class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/2 flex flex-col items-center justify-between p-4 m-4 rounded-lg bg-gradient-to-r from-pink-500 to-pink-700">
+  <% @orders.each_with_index do |order, index|%>
+    <h3>Order number: <%=order.id%></h3>
+    <p>Date of order: <%=order.created_at%></p>
+  <%end%>
 </div>

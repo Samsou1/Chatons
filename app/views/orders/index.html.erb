@@ -1,14 +1,10 @@
-<div class="w-full">
+<div class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-10/12 flex flex-col items-center justify-between">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Orders</h1>
-    <%= link_to 'New order', new_order_path, class: "btn" %>
-  </div>
-
-  <div id="orders" class="min-w-full">
+<div class="w-5/6 sm:w-5/6 md:w-2/3 lg:w-5/12 xl:w-1/2 lg:mx-2 sm:my-8 sm:text-xl md:text-2xl lg:text-3xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 text-center">Orders</div>
+  <div id="orders" class="min-w-full flex flex-col items-center justify-between">
     <%= render @orders %>
   </div>
 </div>
