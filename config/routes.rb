@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :users
   resources :users, only: [:show] do
     resources :profile_pictures, only: [:create]
-    resources :orders, only: %i[show index]
   end
   post 'checkouts/create' => 'checkouts#create', as: 'checkouts_create'
   resources :webhooks, only: [:create]

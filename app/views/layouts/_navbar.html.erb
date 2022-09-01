@@ -81,7 +81,7 @@
             <% if current_user %>
               <%= link_to "Admin", admin_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" if current_user.admin? %>
               <%= link_to "Profile", profile_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
-              <%= link_to "Orders", order_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
+              <%= link_to "Orders", orders_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
               <!--  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</a> -->
               <%= link_to  "Sign out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
             <% else %>
