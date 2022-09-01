@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  authenticated :user, ->(users) { users.admin? } do
+    get 'admin', to: 'admin#index'
+    get 'admin/users'
+    get 'admin/items'
+    get 'admin/item/:id', to: 'admin#item_new', as: 'admin_new'
+  end
   root 'items#index'
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create destroy]
   resources :order_items, only: %i[create destroy]
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: %i[show]
   resources :users, only: [:show] do
     resources :profile_pictures, only: [:create]
   end
