@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     @order.total = 0
   end
 
+  def index
+    @orders = Order.all
+  end
+
   def create
     @order = Order.new(order_params)
     @user = current_user
