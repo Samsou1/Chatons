@@ -1,10 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-<nav class="w-full">
+<nav x-data="{burgerOpen: false}" class="w-full">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
-        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+        <button @click="burgerOpen = !burgerOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
           <!--
             Icon when menu is closed.
@@ -13,7 +13,7 @@
 
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg id="navToggle" onclick="toggleNav()" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <svg x-show="!burgerOpen" x-cloak class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
           <!--
@@ -23,7 +23,7 @@
 
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg id="navToggle" onclick="toggleNav()" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <svg x-show="burgerOpen" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -37,9 +37,9 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
 
-            <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+            <a href="/about" class=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
 
             <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact us</a>
 
@@ -53,37 +53,10 @@
           <img class="hidden lg:block h-6 w-auto mx-8" src="https://cdn-icons-png.flaticon.com/512/5484/5484426.png" alt="Panier"></a>
         </button>
 
-        <%#=begin%>
-          <%# <span class="sr-only">View notifications</span> %>
-          <!-- Heroicon name: outline/bell -->
-          <%# <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"> %>
-            <%# <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /> %>
-          <%# </svg> %>
-        <%#=end%>
-
-<!-- This is the searchbar component -->
-      <%
-=begin%>
- <div class="pt-2 relative mx-auto text-gray-600">
-          <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-            type="search" name="search" placeholder="Search">
-          <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-              viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-              width="512px" height="512px">
-              <path
-                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-            </svg>
-          </button>
-      </div>
-<%
-=end%>
-
         <!-- Profile dropdown -->
-        <div class="ml-3 relative">
+        <div x-data="{isOpen: false}" class="ml-3 relative">
           <div>
-            <button type="button" onclick="toggleProfile()" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-expanded="false" aria-haspopup="true">
+            <button @click="isOpen = !isOpen" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
               <img class="h-8 w-8 rounded-full" src="https://img.freepik.com/vecteurs-libre/chat-mignon-assis-dessin-anime-vecteur-icone-illustration-concept-icone-nature-animale-isole-vecteur-premium-style-dessin-anime-plat_138676-4148.jpg?w=1060&t=st=1661849747~exp=1661850347~hmac=82a44c8811179ecd18b4b40ec2289e9b5c121dbc540c9d5f1a8a74c51ab098ff" alt="">
             </button>
@@ -99,22 +72,51 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div id="profileToggle" class=" transform opacity-0 scale-95 transition ease-out duration-100 absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-900 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-white" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+
+          <div
+          x-cloak
+          @click.outside="isOpen = false"
+          x-show="isOpen"
+          x-transition:enter="transition ease-out duration-100 transform"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-75 transform"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          class="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-gray-900 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none text-white" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
+          <% if current_user %>
+          <%= link_to "Admin", admin_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" if current_user.admin? %>
             <a href="/profile" class="block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
             <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-600" role="menuitem" tabindex="-1" id="user-menu-item-1">Orders</a>
           <!--  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</a> -->
           <%= link_to  "Sign out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
+          <% else %>
+            <%= link_to "Login", user_session_path, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
+            <%= link_to "Register", new_user_registration_path, method: :get, class: "block px-4 py-2 text-sm hover:bg-gray-600" %>
+          <% end %>
           </div>
+
         </div>
     </div>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden hidden" id="navToggle">
+  <div x-show="burgerOpen" @click.outside="burgerOpen = false" x-cloak>
     <div class="px-2 pt-2 pb-3 space-y-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+      <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
 
       <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
 
@@ -123,37 +125,3 @@
     </div>
   </div>
 </nav>
-<script>
-
-  const navToggle = document.querySelectorAll('#navToggle');
-  const profileToggle = document.querySelectorAll('#profileToggle');
-  let open = false;
-
-  const toggleNav = () => {
-    navToggle.forEach(element => {
-      element.classList.toggle('hidden')
-    })
-  }
-
-  const toggleProfile = () => {
-    profileToggle.forEach(element => {
-
-      open = !open
-
-      // element.classList.toggle('hidden')
-
-      if (open) {
-        element.classList.replace('ease-in', 'ease-out')
-        element.classList.replace('duration-150', 'duration-300')
-        element.classList.replace('opacity-0', 'opacity-100')
-        element.classList.replace('scale-95', 'scale-100')
-      }
-      else {
-        element.classList.replace('ease-out', 'ease-in')
-        element.classList.replace('duration-300', 'duration-75')
-        element.classList.replace('opacity-100', 'opacity-0')
-        element.classList.replace('scale-100', 'scale-95')
-      }
-    })
-  }
-</script>

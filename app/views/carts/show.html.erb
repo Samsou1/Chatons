@@ -11,14 +11,17 @@
     </div>
   </div>
 </div>
-<div class="flex justify-between items-center">
-  <div class="container p-8 mx-auto mt-12 bg-gray-800">
-    <div class="w-full overflow-x-auto">
-      <div class="my-2">
-        <h3 class="text-xl font-bold tracking-wider">Shopping Cart</h3>
-      </div>
-      <br>
-      <ul>
+<div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+      <div class="w-3/4 bg-gray-700 px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="text-xl font-bold tracking-wider capitalize">Shopping Cart</h1>
+        </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-500 text-xs uppercase w-2/5">Product Details</h3>
+        </div>
+      <div class="flex items-center hover:bg-gray-700 -mx-8 px-6 py-5">
+        <ul>
         <% @items.each_with_index do |item, index|%>
           Photo n° <%=index + 1%>
           <%= button_to 'X', cart_item_path(@cartitems[index].id), method: :delete, class: "btn" %>

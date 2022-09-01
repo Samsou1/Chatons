@@ -1,18 +1,32 @@
-<p>Bienvenue ! </p>
+<div class="text-5xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500">Welcome <%= @user.first_name %> ! </div>
 
-<div>
-  <%if @user.profile_picture.attached?%>
-    <%= image_tag @user.profile_picture, alt: 'avatar' %>
-      <h3>Changer d'avatar ?</h3>
-      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
-        <%= file_field_tag :profile_picture %>
-        <%= submit_tag "Mettre à jour ton avatar" %>
-      <% end %>
-  <%else%>
-      <h3>Changer d'avatar ?</h3>
-      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
-        <%= file_field_tag :profile_picture %>
-        <%= submit_tag "Mettre à jour ton avatar" %>
-      <% end %>
-  <%end%>
-</div>
+  <div class="w-1/2 h-4/6 flex flex-row grid grid-cols-3 gap-4 items-center justify-between p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 shadow-lg shadow-purple-900/50">
+    <div class="col-span-1 p-5 m-5 justify-center">
+      <%if @user.profile_picture.attached?%>
+        <%= image_tag @user.profile_picture, alt: 'avatar', class: "rounded-lg m-4 shadow-lg max-h-72" %>
+          <p class="text-sm"><a>Changer d'avatar ?</a>
+          <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+            <%= file_field_tag :profile_picture %>
+            <%= submit_tag "Update your avatar", class: "btn" %>
+          <% end %>
+          </p>
+      <%else%>
+          <a>Changer d'avatar ?</a>
+          <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+            <%= file_field_tag :profile_picture %>
+            <%= submit_tag "Update your avatar", class: "btn" %>
+          <% end %>
+      <%end%>
+    </div>
+    <div class="col-span-2 p-5 m-5 rounded-lg shadow-lg max-h-72 bg-white bg-opacity-75">
+      <h3 class="mt-4 text-2xl">Name:</h3>
+      <p class="font-style: italic text-pink-600"><%= @user.first_name %> <%= @user.last_name %></p>
+      <h3 class="mt-4 text-2xl">Adress:</h3>
+      <p class="text-pink-600"><%= @user.address %></p>
+      <p class="text-pink-600"><%= @user.zip_code %> <%= @user.city %></p>
+    </div>
+  </div>
+    <div class="p-5 m-5 justify-center">
+        <%= link_to 'Edit this user', edit_user_registration_path(@user), class: "btn" %>
+        <%= link_to 'View my orders', user_orders_path(@user), class: "btn" %>
+    </div>
