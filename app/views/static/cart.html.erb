@@ -1,6 +1,6 @@
  <div class="container mx-auto mt-10">
-    <div class="flex shadow-md my-10">
-      <div class="w-3/4 bg-gray-700 px-10 py-10 rounded-lg">
+    <div class="flex justify-center shadow-md my-10">
+      <div class="w-3/4 lg:w-1/2 bg-gray-700 px-10 py-10 rounded-lg">
         <div class="flex justify-between border-b pb-8">
           <h1 class="text-xl font-bold tracking-wider capitalize">Shopping Cart</h1>
         </div>
@@ -10,14 +10,16 @@
       <div class="flex flex-col -mx-8 px-6 bg-gray-800 rounded-lg">
 
         <% @items.keys.each_with_index do |item, index|%>
-          <p class="text-xl">Photo n° <%=index + 1%></p>
-          <h3>Title:</h3><p><%=item.title%></p>
-          <h3>Description:</h3><p><%=item.description%></p>
-          <h3>The&nbsp;unit&nbsp;price:</h3><p><%=item.price%></p>
-          <h3>Qty:</h3><p><%=@items.values[index]%></p>
-          <h3>Value:</h3><p><%= item.price * @items.values[index]%></p>
-          <%=image_tag item.image_url, class: "rounded-lg my-8"%>
-          <%= button_to 'Remove item', cart_item_path(Cartitem.where(item_id:item.id)[0]), method: :delete, class: "btn-warning mb-12" %>
+          <article class="ml-12">
+            <p class="text-xl">Photo n° <%=index + 1%></p>
+            <h3>Title:</h3><p><%=item.title%></p>
+            <h3>Description:</h3><p><%=item.description%></p>
+            <h3>The&nbsp;unit&nbsp;price:</h3><p><%=item.price%></p>
+            <h3>Qty:</h3><p><%=@items.values[index]%></p>
+            <h3>Value:</h3><p><%= item.price * @items.values[index]%></p>
+          </article>
+          <%=image_tag item.image_url, class: "place-self-center rounded-lg my-8 max-w-xs"%>
+          <div class="w-full flex justify-center"><%= button_to 'Remove item', cart_item_path(Cartitem.where(item_id:item.id)[0]), method: :delete, class: "btn-warning mb-12" %></div>
           <hr class="mb-4">
         <%end%>
 
