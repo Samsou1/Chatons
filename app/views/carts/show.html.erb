@@ -42,17 +42,5 @@
     </div>
   </div>
 </div>
-Items<br>
-<% @items.each_with_index do |item, index|%>
-  Item n° <%=index + 1%><br>
-  <%=item.title%><br>
-  <%=item.description%><br>
-  <%=item.image_url%><br>
-  <%=item.price%><br>
-  <%  @cartitems[index].id%>
-  <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "btn" %>
-  <br>
-<%end%><br>
-<br>
-Total price:<%=@total_price%>
+
 <%# WARNING: THE CART SHOWED IN /CART IS MADE BY THE STATIC CONTROLER METHOD CART %>

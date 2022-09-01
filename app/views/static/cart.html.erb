@@ -25,7 +25,6 @@
         <ul>
         <% @items.keys.each_with_index do |item, index|%>
           Photo n° <%=index + 1%>
-          <%= button_to 'X', cart_item_path(@cartitems[index].id), method: :delete, class: "btn" %>
           <li>Title:<%=item.title%></li>
           <li>Description:<%=item.description%></li>
           <li>Price:<%=item.price%></li>

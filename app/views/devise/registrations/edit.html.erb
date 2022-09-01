@@ -1,6 +1,6 @@
 <section class="flex flex-col items-center justify-center h-screen flex-1">
   <h2 class="text-4xl p-4 my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500">Edit <%= resource_name.to_s.humanize %></h2>
-  
+
   <div class="p-10 md:w-[500px] flex flex-col gap-4 items-center justify-between my-4 rounded-lg bg-gradient-to-r from-cyan-500 via-purple-400 to-pink-500 shadow-lg shadow-purple-900/50">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -54,6 +54,6 @@
 
     <%= link_to "<-- Back", :back, class: "btn" %>
 
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "w-auto text-white text-sm font-bold p-3 m-3 rounded bg-red-600 hover:bg-red-500 focus:outline-none cursor-pointer justify-self-end" %>
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-warning" %>
   </div>
 </section>
