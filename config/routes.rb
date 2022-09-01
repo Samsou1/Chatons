@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     get 'admin', to: 'admin#index'
     get 'admin/users'
     get 'admin/items'
-    get 'admin/item/:id', to: 'admin#item_new', as: 'admin_new'
   end
   root 'items#index'
   get '/contact', to: 'static#contact'
