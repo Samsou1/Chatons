@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_action :authenticate_user!, only: %i[profile]
+  before_action :authenticate_user!, only: %i[profile cart]
   def contact; end
   def about; end
 
@@ -30,13 +30,25 @@ class StaticController < ApplicationController
     else
       @cart = Cart.find_by(user_id: current_user.id)
       @cartitems = Cartitem.where(cart_id: @cart.id)
-      @items = []
+      @items = {}
       @total_price = 0
       @cartitems.each do |cartitem|
         item = Item.find(cartitem.item_id)
-        @items.push(item)
+        if @items.include?(item)
+          @items[item] += 1
+        else
+          @items[item] = 1
+        end
         @total_price += item.price
       end
     end
+    puts "$"*30
+    puts @items
+    puts @items.keys
+    puts @items.values
+    puts @items.keys[0]
+    puts @items.values[0]
+    puts @items.keys[0].title
+    puts "$"*30
   end
 end

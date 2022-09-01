@@ -12,12 +12,14 @@
   </div>
 </div>
 Items<br>
-<% @items.each_with_index do |item, index|%>
+<% @items.keys.each_with_index do |item, index|%>
   Item n° <%=index + 1%><br>
-  <%=item.title%><br>
-  <%=item.description%><br>
-  <%=item.image_url%><br>
-  <%=item.price%><br>
+  Title:<%=item.title%><br>
+  Description:<%=item.description%><br>
+  Image_url:<%=item.image_url%><br>
+  Price:<%=item.price%><br>
+  Quantity: <%=@items.values[index]%><br>
+  Value: <%= item.price * @items.values[index]%><br>
   <%  @cartitems[index].id%>
   <%= button_to 'Remove item', cart_item_path(@cartitems[index].id), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
   <br>
