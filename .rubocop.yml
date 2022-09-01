@@ -21,3 +21,6 @@ Rails/I18nLocaleTexts:
 
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
