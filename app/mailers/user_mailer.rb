@@ -11,7 +11,7 @@ class UserMailer < ApplicationMailer
     @order = order
     @user = @order.user
     @url = 'https://kittenfest.herokuapp.com/'
-    @items = items.order
+    @items = @order.items
     mail(to: @user.email, subject: 'Order on CatShop')
   end
 end

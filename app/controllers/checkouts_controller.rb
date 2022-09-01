@@ -1,18 +1,20 @@
 class CheckoutsController < ApplicationController
   def create
+    @order = Order.create!(order_params)
+    @total = @order.total
     @session = Stripe::Checkout::Session.create(
       {
         mode: 'payment',
-        success_url: checkout_success_url,
-        cancel_url: checkout_cancel_url,
+        success_url: root_url,
+        cancel_url: cart_url(current_user.cart),
         payment_method_types: ['card'],
         line_items: [{
           quantity: 1,
           price_data: {
-            unit_amount: Item.find(params[:id]).price.to_s.gsub(/\./mi, ''),
+            unit_amount: @total,
             currency: 'eur',
             product_data: {
-              name: Item.find(params[:id]).title
+              name: 'Kitten pictures'
             }
           }
         }]
