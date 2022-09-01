@@ -9,14 +9,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(user_id: current_user.id, total: total)
     @user = current_user
     @cart = @user.cart
     @items = current_user.cart.items
+    total = 0
 
     @items.each do |item|
       Orderitem.create!(order_id: @order.id, item_id: item.id)
-      @order.total += item.price
+      total += item.price
     end
 
     respond_to do |format|

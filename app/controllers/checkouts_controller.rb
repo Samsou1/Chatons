@@ -1,7 +1,16 @@
 class CheckoutsController < ApplicationController
   def create
-    @order = Order.create!(user_id: current_user.id, total: 0)
-    @total = @order.total
+    @total = 0
+    @cart = current_user.cart
+    @items = @cart.items
+
+    @items.each do |item|
+      @total += item.price
+    end
+
+    @order = Order.create(user_id: current_user.id)
+    @order.total = @total
+
     @session = Stripe::Checkout::Session.create(
       {
         mode: 'payment',
@@ -11,7 +20,7 @@ class CheckoutsController < ApplicationController
         line_items: [{
           quantity: 1,
           price_data: {
-            unit_amount: @total,
+            unit_amount: 2000,
             currency: 'eur',
             product_data: {
               name: 'Kitten pictures'
@@ -22,7 +31,13 @@ class CheckoutsController < ApplicationController
     )
 
     respond_to do |format|
-      format.js
+      if @order.save
+        format.html { redirect_to orders_url(@order), notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: @order }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
 end
