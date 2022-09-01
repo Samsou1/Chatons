@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static#contact'
   get '/about', to: 'static#about'
   get '/profile', to: 'static#profile'
+  get '/cart', to: 'static#cart'
   resources :items
   resources :items, only: [:show] do
     resources :images, only: [:create]
